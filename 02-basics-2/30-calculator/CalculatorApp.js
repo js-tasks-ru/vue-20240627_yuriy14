@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 
 export default defineComponent({
   name: 'CalculatorApp',
@@ -7,21 +7,19 @@ export default defineComponent({
     const first = ref(0)
     const second = ref(0)
     const picked = ref("sum")
-    const result = ref(0)
-    watch([first, second, picked], () => {
+
+    const result = computed(() => {
       switch (picked.value) {
         case 'sum':
-          result.value = first.value + second.value
-          break
+          return first.value + second.value
         case 'subtract':
-          result.value = first.value - second.value
-          break
+          return first.value - second.value
         case 'multiply':
-          result.value = first.value * second.value
-          break
+          return first.value * second.value
         case 'divide':
-          result.value = second.value ? (first.value / second.value) : 0
-          break
+          return second.value ? (first.value / second.value) : 0
+        default:
+          return 0
       }
     })
 
@@ -29,7 +27,7 @@ export default defineComponent({
       first,
       second,
       picked,
-      result,
+      result
     }
   },
 
