@@ -8,6 +8,10 @@ export default defineComponent({
     EmailListItem,
   },
 
+  emits: [
+    'removeEmail',
+  ],
+
   props: {
     emails: {
       type: Array,
@@ -22,6 +26,7 @@ export default defineComponent({
         :key="email"
         :email="email"
         :marked="isMarked"
+        @removeEmail="$emit('removeEmail', index)"
       />
     </ul>
   `,

@@ -8,10 +8,20 @@ import './MeetupView.css'
 
 export default defineComponent({
   name: 'MeetupView',
+  props: {
+    meetup: {
+      type: Object,
+      required: true,
+    }
+  },
 
   components: {
     UiAlert,
     UiContainer,
+    MeetupInfo,
+    MeetupAgenda,
+    MeetupDescription,
+    MeetupCover,
   },
 
   template: `
@@ -23,6 +33,10 @@ export default defineComponent({
         <div class="meetup">
           <div class="meetup__content">
             <h2>Описание</h2>
+            <MeetupInfo :organizer="meetup.organizer" :place="meetup.place" :date="meetup.date"/>
+            <MeetupAgenda />
+            <MeetupDescription />
+            <MeetupCover />
 
             <!-- Описание митапа -->
 

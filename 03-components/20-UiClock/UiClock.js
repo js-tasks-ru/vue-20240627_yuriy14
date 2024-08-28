@@ -1,9 +1,20 @@
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'UiClock',
 
-  setup() {},
+  setup() {
+    const date = ref(getDate())
+    function getDate() {
+      return new Intl.DateTimeFormat('ru', {
+        timeStyle: 'medium',
+      }).format(new Date())
+    }
 
-  template: `<div class="clock">10:12:02</div>`,
+    return {
+      date,
+    }
+  },
+
+  template: `<div class="clock">{{ date }}</div>`,
 })
