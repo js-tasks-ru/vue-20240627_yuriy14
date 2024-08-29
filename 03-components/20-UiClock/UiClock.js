@@ -5,7 +5,7 @@ export default defineComponent({
 
   setup() {
     const date = ref(new Date())
-    const formattedDate = computed(() => new Intl.DateTimeFormat('ru', {
+    const formattedDate = computed(() => new Intl.DateTimeFormat(navigator.language, {
         timeStyle: 'medium',
       }).format(date.value)
     )
