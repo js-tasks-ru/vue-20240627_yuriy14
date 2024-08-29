@@ -1,20 +1,25 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed, onUnmounted } from 'vue'
 
 export default defineComponent({
   name: 'UiClock',
 
   setup() {
-    const date = ref(getDate())
-    function getDate() {
-      return new Intl.DateTimeFormat('ru', {
+    const date = ref(new Date())
+    const formattedDate = computed(() => new Intl.DateTimeFormat('ru', {
         timeStyle: 'medium',
-      }).format(new Date())
-    }
+      }).format(date.value)
+    )
+    let intervalId = setInterval(() => date.value = new Date(), 1000)
+    onUnmounted(() => {
+      clearInterval(intervalId)
+      intervalId = null;
+    })
 
     return {
       date,
+      formattedDate,
     }
   },
 
-  template: `<div class="clock">{{ date }}</div>`,
+  template: `<div class="clock">{{ formattedDate }}</div>`,
 })
