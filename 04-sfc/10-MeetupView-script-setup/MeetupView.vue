@@ -1,23 +1,17 @@
 <script setup>
-// import { defineComponent } from 'vue'
+import { defineProps } from 'vue'
 import { UiAlert, UiContainer } from '@shgk/vue-course-ui'
 import MeetupAgenda from './MeetupAgenda.vue'
 import MeetupDescription from './MeetupDescription.vue'
 import MeetupCover from './MeetupCover.vue'
 import MeetupInfo from './MeetupInfo.vue'
 
-// export default defineComponent({
-//   name: 'MeetupView',
-
-//   components: {
-//     UiAlert,
-//     UiContainer,
-//     MeetupCover,
-//     MeetupAgenda,
-//     MeetupDescription,
-//     MeetupInfo
-//   },
-// })
+defineProps({
+  meetup: {
+    type: Object,
+    required: true,
+  }
+})
 </script>
 
 <template>
