@@ -8,16 +8,17 @@ export default defineComponent({
     EmailListItem,
   },
 
-  emits: [
-    'removeEmail',
-  ],
-
   props: {
     emails: {
       type: Array,
       required: true,
     },
   },
+
+  emits: [
+    'removeEmail',
+  ],
+
 
   template: `
     <ul class="emails-list unstyled-list" aria-label="Emails">

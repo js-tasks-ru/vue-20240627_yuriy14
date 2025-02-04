@@ -8,13 +8,6 @@ import './MeetupView.css'
 
 export default defineComponent({
   name: 'MeetupView',
-  props: {
-    meetup: {
-      type: Object,
-      required: true,
-    }
-  },
-
   components: {
     UiAlert,
     UiContainer,
@@ -22,6 +15,13 @@ export default defineComponent({
     MeetupAgenda,
     MeetupDescription,
     MeetupCover,
+  },
+
+  props: {
+    meetup: {
+      required: true,
+      type: Object,
+    }
   },
 
   template: `
